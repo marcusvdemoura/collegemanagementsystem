@@ -1,5 +1,5 @@
 ## DORSET COLLEGE
-## STUDENTS: Marcus Vinicius de Freitas Moura - 22415
+## STUDENT: Marcus Vinicius de Freitas Moura - 22415
 ## LECTURER: John Rowley
 ## Object Oriented Programming - CA3
 ### DATE: 06/05/2021
