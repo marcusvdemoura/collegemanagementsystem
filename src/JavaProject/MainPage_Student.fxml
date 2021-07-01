@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="666.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaProject.MainPageStudent">
+   <children>
+      <ImageView fitHeight="666.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/main.jpeg" />
+         </image>
+      </ImageView>
+      <TabPane prefHeight="666.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="127.0">
+        <tabs>
+          <Tab text="Assignment">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="1000.0">
+                     <children>
+                        <Label fx:id="welcomeMessage1" layoutX="62.0" layoutY="39.0" text="Student Name" />
+                        <Label layoutX="62.0" layoutY="74.0" text="Module" />
+                        <Button fx:id="btnQuit1" layoutX="332.0" layoutY="483.0" mnemonicParsing="false" onAction="#quitProgram" prefHeight="25.0" prefWidth="60.0" text="Quit" />
+                        <ChoiceBox fx:id="assignmentGetModule" layoutX="150.0" layoutY="70.0" prefWidth="150.0" />
+                         <TableView fx:id="tableViewAssignment" layoutX="449.0" layoutY="8.0" onMouseClicked="#getSelectedAssignment" prefHeight="499.0" prefWidth="526.0">
+                             <columns>
+                                 <TableColumn fx:id="col_assignmentId" prefWidth="45.0" text="ID" />
+                                 <TableColumn fx:id="col_assignmentModule" prefWidth="137.0" text="MODULE" />
+                                 <TableColumn fx:id="col_assignmentDate" prefWidth="95.0" text="DATE" />
+                                 <TableColumn fx:id="col_assignmentDescription" prefWidth="248.0" text="DESCRIPTION" />
+                             </columns>
+                         </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Grades">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="1000.0">
+                     <children>
+                        <Label layoutX="62.0" layoutY="74.0" text="Module" />
+                        <Button fx:id="btnQuit2" layoutX="332.0" layoutY="483.0" mnemonicParsing="false" onAction="#quitProgram" prefHeight="25.0" prefWidth="60.0" text="Quit" />
+                        <ListView layoutX="449.0" layoutY="8.0" prefHeight="499.0" prefWidth="526.0" />
+                        <ChoiceBox fx:id="gradesGetModule" layoutX="150.0" layoutY="70.0" prefHeight="25.0" prefWidth="150.0" />
+                         <TableView fx:id="tableViewGrades" layoutX="449.0" layoutY="8.0" onMouseClicked="#getSelectedGrade" prefHeight="499.0" prefWidth="526.0">
+                             <columns>
+                                 <TableColumn fx:id="col_gradesId" prefWidth="73.0" text="ID" />
+                                 <TableColumn fx:id="col_gradesStudentId" prefWidth="163.0" text="StudentID" />
+                                 <TableColumn fx:id="col_gradesModule" prefWidth="188.0" text="Module" />
+                                 <TableColumn fx:id="col_gradesGrades" prefWidth="101.0" text="Grade" />
+                             </columns>
+                         </TableView>
+                        <Label fx:id="welcomeMessage2" layoutX="62.0" layoutY="39.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Exams">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="1000.0">
+                     <children>
+                        <Label layoutX="62.0" layoutY="74.0" text="Module" />
+                        <Button fx:id="btnQuit3" layoutX="332.0" layoutY="483.0" mnemonicParsing="false" onAction="#quitProgram" prefHeight="25.0" prefWidth="60.0" text="Quit" />
+                        <ChoiceBox fx:id="examsGetModule" layoutX="150.0" layoutY="70.0" prefHeight="25.0" prefWidth="150.0" />
+                         <TableView fx:id="tableViewExams" layoutX="449.0" layoutY="8.0" onMouseClicked="#getSelectedExam" prefHeight="499.0" prefWidth="526.0">
+                             <columns>
+                                 <TableColumn fx:id="col_examsId" prefWidth="44.0" text="ID" />
+                                 <TableColumn fx:id="col_examsModule" prefWidth="347.0" text="Module" />
+                                 <TableColumn fx:id="col_examsDate" prefWidth="134.0" text="Date" />
+                             </columns>
+                         </TableView>
+                        <Label fx:id="welcomeMessage3" layoutX="62.0" layoutY="39.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="TimeTable">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="1000.0">
+                     <children>
+                        <Button fx:id="btnQuit4" layoutX="470.0" layoutY="460.0" mnemonicParsing="false" onAction="#quitProgram" prefHeight="25.0" prefWidth="60.0" text="Quit" />
+                        <TableView fx:id="tableViewTimetable" layoutX="166.0" layoutY="94.0" prefHeight="295.0" prefWidth="669.0">
+                          <columns>
+                            <TableColumn fx:id="col_timetableModule" prefWidth="275.0" text="MODULE" />
+                            <TableColumn fx:id="col_timetableLecturer" prefWidth="159.0" text="LECTURER" />
+                              <TableColumn fx:id="col_timetableWeekday" prefWidth="132.0" text="WEEK DAY" />
+                              <TableColumn fx:id="col_timetableClassHour" prefWidth="102.0" text="CLASS HOUR" />
+                          </columns>
+                        </TableView>
+                        <Label fx:id="welcomeMessage4" layoutX="62.0" layoutY="39.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

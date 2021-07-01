@@ -1,0 +1,364 @@
+
+
+CREATE DATABASE collegeManagementSystem;
+
+USE collegeManagementSystem;
+
+-- MySQL dump 10.13  Distrib 8.0.24, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: collegemanagementsystem
+-- ------------------------------------------------------
+-- Server version	8.0.24
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `admin` (
+  `firstName` varchar(30) NOT NULL,
+  `lastName` varchar(45) NOT NULL,
+  `gender` varchar(45) NOT NULL,
+  `phoneNumber` varchar(45) NOT NULL,
+  `dob` varchar(45) NOT NULL,
+  `emailAddress` varchar(45) NOT NULL,
+  `adminID` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  PRIMARY KEY (`adminID`),
+  UNIQUE KEY `password_UNIQUE` (`password`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin`
+--
+
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES ('Marcus','Moura','Male','0833603311','20.06.1995','marcusmoura@outlook.com','marvin','123456');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `assignment`
+--
+
+DROP TABLE IF EXISTS `assignment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `assignment` (
+  `dueDate` varchar(10) NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  `lecturerId` varchar(45) DEFAULT NULL,
+  `moduleSubject` varchar(45) NOT NULL,
+  `idassignment` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`idassignment`),
+  KEY `index1` (`lecturerId`),
+  KEY `index2` (`moduleSubject`),
+  CONSTRAINT `fk_assignment_1` FOREIGN KEY (`lecturerId`) REFERENCES `lecturer` (`idlecturer`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `fk_assignment_2` FOREIGN KEY (`moduleSubject`) REFERENCES `module` (`subject`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `assignment`
+--
+
+LOCK TABLES `assignment` WRITE;
+/*!40000 ALTER TABLE `assignment` DISABLE KEYS */;
+INSERT INTO `assignment` VALUES ('2021-05-11','Design a College Management Software in Java','johnrowley','Programming 2',1),('2021-05-07','Design a web API','erika','Web Developing Back End',2),('2021-05-17','Create an app to track the dublin bikes location','johnrowley','Mobile Development 1',4),('2018-05-10','test description1','wenhao','testModule',6);
+/*!40000 ALTER TABLE `assignment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `collegebranches`
+--
+
+DROP TABLE IF EXISTS `collegebranches`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `collegebranches` (
+  `unit` varchar(50) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  PRIMARY KEY (`unit`),
+  UNIQUE KEY `unit_UNIQUE` (`unit`),
+  UNIQUE KEY `address_UNIQUE` (`address`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `collegebranches`
+--
+
+LOCK TABLES `collegebranches` WRITE;
+/*!40000 ALTER TABLE `collegebranches` DISABLE KEYS */;
+INSERT INTO `collegebranches` VALUES ('I','Dorset Street'),('III','Fair View Road'),('II','Gardiner House'),('IV','Stephens road'),('testBranch','testAddress1');
+/*!40000 ALTER TABLE `collegebranches` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `course`
+--
+
+DROP TABLE IF EXISTS `course`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `course` (
+  `collegeBranchUnit` varchar(45) DEFAULT NULL,
+  `name` varchar(45) NOT NULL,
+  `price` double NOT NULL,
+  PRIMARY KEY (`name`),
+  KEY `index1` (`collegeBranchUnit`),
+  CONSTRAINT `fk_course_1` FOREIGN KEY (`collegeBranchUnit`) REFERENCES `collegebranches` (`unit`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `course`
+--
+
+LOCK TABLES `course` WRITE;
+/*!40000 ALTER TABLE `course` DISABLE KEYS */;
+INSERT INTO `course` VALUES ('II','Business',4800),('I','Computer Science',4200),('III','Digital Marketing',5500),('I','Law',6000),('IV','Nursing',7000),('testBranch','testCourse',50010);
+/*!40000 ALTER TABLE `course` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `courseyear`
+--
+
+DROP TABLE IF EXISTS `courseyear`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `courseyear` (
+  `year` int NOT NULL,
+  `course` varchar(45) NOT NULL,
+  `moduleName` varchar(45) NOT NULL,
+  KEY `fk` (`course`),
+  KEY `index2` (`moduleName`),
+  CONSTRAINT `fk_courseYear_1` FOREIGN KEY (`course`) REFERENCES `course` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_courseYear_2` FOREIGN KEY (`moduleName`) REFERENCES `module` (`subject`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `courseyear`
+--
+
+LOCK TABLES `courseyear` WRITE;
+/*!40000 ALTER TABLE `courseyear` DISABLE KEYS */;
+INSERT INTO `courseyear` VALUES (1,'Computer Science','Programming 1'),(2,'Computer Science','Programming 2'),(1,'Law','Principles of Law'),(1,'Business','Introduction to Marketing'),(1,'Nursing','phisiology'),(1,'Digital Marketing','History of Marketing'),(3,'Computer Science','Web Developing Back End'),(2,'Computer Science','Mobile Development 2'),(1,'testCourse','testModule');
+/*!40000 ALTER TABLE `courseyear` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `exam`
+--
+
+DROP TABLE IF EXISTS `exam`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `exam` (
+  `date` varchar(10) NOT NULL,
+  `lecturerId` varchar(45) DEFAULT NULL,
+  `module` varchar(45) NOT NULL,
+  `idexam` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`idexam`),
+  KEY `index1` (`lecturerId`),
+  KEY `index2` (`module`),
+  CONSTRAINT `fk_exam_1` FOREIGN KEY (`lecturerId`) REFERENCES `lecturer` (`idlecturer`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `fk_exam_2` FOREIGN KEY (`module`) REFERENCES `module` (`subject`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `exam`
+--
+
+LOCK TABLES `exam` WRITE;
+/*!40000 ALTER TABLE `exam` DISABLE KEYS */;
+INSERT INTO `exam` VALUES ('2023-04-07','johnrowley','Programming 2',1),('2021-06-17','johnrowley','Programming 1',2),('2021-05-20','johnrowley','Mobile Development 2',3),('2021-05-18','johnrowley','Programming 1',4),('2021-05-21','wenhao','testModule',5);
+/*!40000 ALTER TABLE `exam` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gradesmodule`
+--
+
+DROP TABLE IF EXISTS `gradesmodule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `gradesmodule` (
+  `studentid` varchar(45) NOT NULL,
+  `modulename` varchar(45) NOT NULL,
+  `grade` double NOT NULL,
+  `lecturerid` varchar(45) NOT NULL,
+  `gradeid` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`gradeid`),
+  KEY `index1` (`studentid`),
+  KEY `index2` (`modulename`),
+  CONSTRAINT `fk_gradesModule_1` FOREIGN KEY (`studentid`) REFERENCES `student` (`idstudent`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_gradesModule_2` FOREIGN KEY (`modulename`) REFERENCES `module` (`subject`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gradesmodule`
+--
+
+LOCK TABLES `gradesmodule` WRITE;
+/*!40000 ALTER TABLE `gradesmodule` DISABLE KEYS */;
+INSERT INTO `gradesmodule` VALUES ('michele','Programming 2',10,'johnrowley',3),('michele','Mobile Development 2',10,'johnrowley',4),('janis','Programming 1',9.5,'johnrowley',5),('marcusvinicius','testModule',9,'wenhao',6);
+/*!40000 ALTER TABLE `gradesmodule` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lecturer`
+--
+
+DROP TABLE IF EXISTS `lecturer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `lecturer` (
+  `firstName` varchar(45) NOT NULL,
+  `lastName` varchar(45) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `dob` varchar(10) NOT NULL,
+  `emailAddress` varchar(45) NOT NULL,
+  `idlecturer` varchar(50) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  PRIMARY KEY (`idlecturer`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lecturer`
+--
+
+LOCK TABLES `lecturer` WRITE;
+/*!40000 ALTER TABLE `lecturer` DISABLE KEYS */;
+INSERT INTO `lecturer` VALUES ('Annette','Forster','Female','08236521456','2018-04-13','annete@forster.ie','annette','123456'),('Erika','Vodloko','Female','5465656565','2017-04-12','erika@vodloko.com','erika','123456'),('george','something','Male','5252424542','2017-04-03','george@gmail.com','george','123456'),('Ines','Prates','Female','575662656','2017-04-04','ines@prates.com','inesprates','123456'),('John','Rowley','Male','0125478965','1976-04-07','johnrowley@gmail.com','johnrowley','123456'),('Marlene','Roriz','Female','57312154562','2016-04-11','marlene@gmail.com','marleneroriz','123456'),('Suzanna','Rialtz','Female','16563235653','2021-04-06','suzy@hotmail.com','suzana','123456'),('Valeria','Souza','Female','454545454','2017-04-19','valeria@gmail.com','valeria','123456'),('Wenhao','Fu','Male','025433325852','2016-05-11','wenhao@gmail.com','wenhao','123456');
+/*!40000 ALTER TABLE `lecturer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `module`
+--
+
+DROP TABLE IF EXISTS `module`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `module` (
+  `subject` varchar(50) NOT NULL,
+  `course` varchar(45) NOT NULL,
+  `collegeBranch` varchar(45) NOT NULL,
+  `weekDay` varchar(45) NOT NULL,
+  `classHour` varchar(45) NOT NULL,
+  `idlecturer` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`subject`),
+  KEY `index3` (`course`),
+  KEY `fk_module_1` (`idlecturer`),
+  CONSTRAINT `fk_module_1` FOREIGN KEY (`idlecturer`) REFERENCES `lecturer` (`idlecturer`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `fk_module_2` FOREIGN KEY (`course`) REFERENCES `course` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `module`
+--
+
+LOCK TABLES `module` WRITE;
+/*!40000 ALTER TABLE `module` DISABLE KEYS */;
+INSERT INTO `module` VALUES ('History of Marketing','Digital Marketing','III','Monday','13:15','inesprates'),('Introduction to Marketing','Business','II','Monday','12:45','marleneroriz'),('Mobile Development 1','Computer Science','I','Thursday','09:00','johnrowley'),('Mobile Development 2','Computer Science','I','Friday','15:00','johnrowley'),('phisiology','Nursing','IV','Tuesday','13:00','suzana'),('Principles of Law','Law','I','Tuesday','13:00','marleneroriz'),('Programming 1','Computer Science','I','Wednesday','12:45','johnrowley'),('Programming 2','Computer Science','I','Tuesday','12:45','johnrowley'),('Programming 3','Computer Science','I','Friday','12:45','johnrowley'),('testModule','testCourse','testBranch','Monday','13:15','wenhao'),('Web Developing Back End','Computer Science','I','Thursday','15:00','erika');
+/*!40000 ALTER TABLE `module` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `payments`
+--
+
+DROP TABLE IF EXISTS `payments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `payments` (
+  `idpayments` int NOT NULL AUTO_INCREMENT,
+  `idstudent` varchar(45) NOT NULL,
+  `paidInstallment` varchar(5) NOT NULL DEFAULT 'PAID',
+  `paymentDate` varchar(45) NOT NULL,
+  PRIMARY KEY (`idpayments`),
+  KEY `index2` (`idstudent`),
+  CONSTRAINT `fk_payments_1` FOREIGN KEY (`idstudent`) REFERENCES `student` (`idstudent`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `payments`
+--
+
+LOCK TABLES `payments` WRITE;
+/*!40000 ALTER TABLE `payments` DISABLE KEYS */;
+INSERT INTO `payments` VALUES (19,'valeria','PAID','03-05-2021'),(20,'liciamoura','PAID','03-05-2021'),(21,'liciamoura','PAID','03-05-2021'),(22,'liciamoura','PAID','04-05-2021'),(23,'liciamoura','PAID','04-05-2021'),(24,'liciamoura','PAID','04-05-2021'),(25,'liciamoura','PAID','04-05-2021'),(26,'valeria','PAID','04-05-2021'),(27,'valeria','PAID','04-05-2021'),(33,'marcusvinicius','PAID','07-05-2021'),(34,'marcusvinicius','PAID','07-05-2021');
+/*!40000 ALTER TABLE `payments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `student`
+--
+
+DROP TABLE IF EXISTS `student`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `student` (
+  `firstName` varchar(45) NOT NULL,
+  `lastName` varchar(45) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `dob` varchar(10) NOT NULL,
+  `emailAddress` varchar(45) NOT NULL,
+  `idstudent` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `collegeBranch` varchar(45) DEFAULT NULL,
+  `course` varchar(45) DEFAULT NULL,
+  `isPaidFull` tinyint DEFAULT NULL,
+  `courseYear` int DEFAULT NULL,
+  `numberOfInstallments` int DEFAULT '0',
+  PRIMARY KEY (`idstudent`),
+  KEY `index3` (`collegeBranch`),
+  CONSTRAINT `fk_student_1` FOREIGN KEY (`collegeBranch`) REFERENCES `collegebranches` (`unit`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `student`
+--
+
+LOCK TABLES `student` WRITE;
+/*!40000 ALTER TABLE `student` DISABLE KEYS */;
+INSERT INTO `student` VALUES ('Tony','Stark','Male','78513655','2021-04-01','tony@stark.ie','ironman','123456','I','Computer Science',1,2,0),('Janis','Celmars','Male','0832546321','2018-03-23','janis@celmars.ie','janis','123456','I','Computer Science',1,1,0),('Licia','Moura','Female','625458423','2015-12-16','licia@moura.com','liciamoura','123456','I','Law',1,1,6),('Marcus','Moura','Male','0833603311','1995-06-20','marcusdemoura@outlook.com','marcusmoura','123456','I','Computer Science',1,2,0),('Marcus','Vinicius','Male','08336033333','2011-03-11','marcus@gmail.com','marcusvinicius','123456','testBranch','testCourse',1,1,2),('Michele','Silva','Female','0536874562','2021-03-31','mi@silva.ie','michele','123456','I','Computer Science',1,2,5),('Peter','Parker','Male','325663322','2021-04-12','peter@parker.','spiderman','123456','I','Computer Science',0,1,5),('teste','teste','Male','test','2021-04-26','test','teste','123456','I','Computer Science',1,1,0),('Valeria','SAFADONA','Female','235452356','2016-02-05','val@paz.ie','valeria','123456','I','Computer Science',0,2,6);
+/*!40000 ALTER TABLE `student` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-05-07 12:54:02

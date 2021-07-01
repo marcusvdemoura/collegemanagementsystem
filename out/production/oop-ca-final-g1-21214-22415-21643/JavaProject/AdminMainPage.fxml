@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="666.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaProject.AdminMainPage">
+    <children>
+        <ImageView fitHeight="666.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <image>
+                <Image url="@images/admin.jpeg" />
+            </image>
+        </ImageView>
+        <TabPane layoutX="6.0" prefHeight="666.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="127.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab fx:id="manageStudent" text="Student">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="1000.0">
+                            <children>
+                                <Label layoutX="62.0" layoutY="39.0" text="Student ID" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="74.0" text="First Name" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="318.0" text="Branch" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="251.0" text="Email" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="213.0" text="Dob" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="108.0" text="Last Name" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="145.0" text="Gender" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="178.0" text="Phone" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="284.0" text="Password" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="353.0" text="Course" textFill="WHITE" />
+                                <TextField fx:id="insertStudentId" layoutX="150.0" layoutY="35.0" prefHeight="25.0" prefWidth="100.0" />
+                                <TextField fx:id="insertStudentFirstName" layoutX="150.0" layoutY="70.0" prefHeight="25.0" prefWidth="224.0" />
+                                <TextField fx:id="insertStudentLastName" layoutX="150.0" layoutY="105.0" prefHeight="25.0" prefWidth="224.0" />
+                                <TextField fx:id="insertStudentPhone" layoutX="150.0" layoutY="175.0" prefHeight="25.0" prefWidth="150.0" />
+                                <TextField fx:id="studentEmailInsert" layoutX="150.0" layoutY="245.0" prefHeight="25.0" prefWidth="150.0" />
+                                <TextField fx:id="studentPasswordInsert" layoutX="150.0" layoutY="280.0" prefHeight="25.0" prefWidth="150.0" />
+                                <Button fx:id="saveButtonStudent" layoutX="58.0" layoutY="499.0" mnemonicParsing="false" onAction="#toCreateStudent" prefHeight="25.0" prefWidth="60.0" text="Save" />
+                                <Button layoutX="150.0" layoutY="499.0" mnemonicParsing="false" onAction="#toEditStudent" prefHeight="25.0" prefWidth="60.0" text="Update" />
+                                <Button layoutX="241.0" layoutY="499.0" mnemonicParsing="false" onAction="#toDeleteStudent" prefHeight="25.0" prefWidth="60.0" text="Delete" />
+                                <Button layoutX="332.0" layoutY="499.0" mnemonicParsing="false" onAction="#toClearInputs" prefHeight="25.0" prefWidth="60.0" text="Clear" />
+                                <DatePicker fx:id="studentdobInsert" layoutX="150.0" layoutY="210.0" prefHeight="25.0" prefWidth="150.0" />
+                                <Label layoutX="62.0" layoutY="423.0" text="Pay Full?" textFill="WHITE" />
+                        <Label layoutX="62.0" layoutY="389.0" text="Course Year" textFill="WHITE" />
+                        <ChoiceBox fx:id="genderStudent" layoutX="150.0" layoutY="140.0" prefHeight="25.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="studentInBranch" layoutX="150.0" layoutY="315.0" prefHeight="25.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="studentInCourse" layoutX="150.0" layoutY="350.0" prefHeight="25.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="studentIsPaid" layoutX="150.0" layoutY="420.0" prefHeight="25.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="addStudentCourseYear" layoutX="150.0" layoutY="385.0" prefHeight="25.0" prefWidth="150.0" />
+                        <TableView fx:id="studentTableView" layoutX="449.0" layoutY="8.0" onMouseClicked="#getSelectedStudent" prefHeight="516.0" prefWidth="526.0">
+                          <columns>
+                            <TableColumn fx:id="col_studentid" prefWidth="101.0" text="StudentID" />
+                            <TableColumn fx:id="col_studentFirstName" prefWidth="85.0" text="FirstName" />
+                              <TableColumn fx:id="col_studentLastName" prefWidth="85.0" text="LastName" />
+                              <TableColumn fx:id="col_studentBranch" prefWidth="62.0" text="Branch" />
+                              <TableColumn fx:id="col_studentCourse" prefWidth="81.0" text="Course" />
+                              <TableColumn fx:id="col_studentYear" prefWidth="112.0" text="Year" />
+                          </columns>
+                        </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="manageLecturer" text="Lecturer">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="1000.0">
+                            <children>
+                                <Label layoutX="62.0" layoutY="39.0" text="Lecturer ID" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="74.0" text="First Name" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="251.0" text="Email" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="284.0" text="Password" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="213.0" text="Dob" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="108.0" text="Last Name" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="145.0" text="Gender" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="178.0" text="Phone" textFill="WHITE" />
+                                <TextField fx:id="createLecturerId" layoutX="150.0" layoutY="35.0" prefHeight="25.0" prefWidth="100.0" />
+                                <TextField fx:id="lecturerFirstName" layoutX="150.0" layoutY="70.0" prefHeight="25.0" prefWidth="224.0" />
+                                <TextField fx:id="lecturerLastName" layoutX="150.0" layoutY="105.0" prefHeight="25.0" prefWidth="224.0" />
+                                <TextField fx:id="lecturerPhone" layoutX="150.0" layoutY="175.0" prefHeight="25.0" prefWidth="150.0" />
+                                <TextField fx:id="lecturerEmail" layoutX="150.0" layoutY="245.0" prefHeight="25.0" prefWidth="150.0" />
+                                <TextField fx:id="lecturerpassword" layoutX="150.0" layoutY="280.0" prefHeight="25.0" prefWidth="150.0" />
+                                <Button fx:id="saveNewLecturerBtn" layoutX="58.0" layoutY="499.0" mnemonicParsing="false" onAction="#toCreateLecturer" prefHeight="25.0" prefWidth="60.0" text="Save" />
+                                <Button layoutX="150.0" layoutY="499.0" mnemonicParsing="false" onAction="#toEditLecturer" prefHeight="25.0" prefWidth="60.0" text="Update" />
+                                <Button layoutX="241.0" layoutY="499.0" mnemonicParsing="false" onAction="#toDeleteLecturer" prefHeight="25.0" prefWidth="60.0" text="Delete" />
+                                <Button layoutX="332.0" layoutY="499.0" mnemonicParsing="false" onAction="#toClearInputs" prefHeight="25.0" prefWidth="60.0" text="Clear" />
+                                <DatePicker fx:id="lecturerbirth" layoutX="150.0" layoutY="210.0" prefHeight="25.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="genderLecturer" layoutX="150.0" layoutY="140.0" prefHeight="25.0" prefWidth="150.0" />
+                        <TableView fx:id="lecturerTableView" layoutX="449.0" layoutY="8.0" onMouseClicked="#getSelectedLecturer" prefHeight="516.0" prefWidth="526.0">
+                          <columns>
+                            <TableColumn fx:id="col_lecturerid" prefWidth="100.0" text="LecturerID" />
+                            <TableColumn fx:id="col_lecturerFirstName" prefWidth="113.0" text="FirstName" />
+                              <TableColumn fx:id="col_lecturerLastName" prefWidth="107.0" text="LastName" />
+                              <TableColumn fx:id="col_lecturerGender" prefWidth="94.0" text="Gender" />
+                              <TableColumn fx:id="col_lecturerPhone" prefWidth="111.0" text="Phone" />
+                          </columns>
+                        </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="manageBranch" text="Branch">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="1000.0">
+                            <children>
+                                <Label layoutX="62.0" layoutY="39.0" text="Unit" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="74.0" text="Address" textFill="WHITE" />
+                                <TextField fx:id="branchUnitInsert" layoutX="150.0" layoutY="35.0" prefHeight="25.0" prefWidth="150.0" />
+                                <TextField fx:id="branchAddressInsert" layoutX="150.0" layoutY="70.0" prefHeight="25.0" prefWidth="224.0" />
+                                <Button fx:id="saveNewBranchBtn" layoutX="58.0" layoutY="499.0" mnemonicParsing="false" onAction="#toCreateCollegeBranch" prefHeight="25.0" prefWidth="60.0" text="Save" />
+                                <Button fx:id="updateBranchBtn" layoutX="150.0" layoutY="499.0" mnemonicParsing="false" onAction="#toEditCollegeBranch" prefHeight="25.0" prefWidth="60.0" text="Update" />
+                                <Button fx:id="deleteBranchBtn" layoutX="241.0" layoutY="499.0" mnemonicParsing="false" onAction="#toDeleteBranch" prefHeight="25.0" prefWidth="60.0" text="Delete" />
+                                <Button fx:id="clearBranchBtn" layoutX="332.0" layoutY="499.0" mnemonicParsing="false" onAction="#toClearInputs" prefHeight="25.0" prefWidth="60.0" text="Clear" />
+                        <TableView fx:id="collegeBranchTableView" layoutX="449.0" layoutY="8.0" onMouseClicked="#getSelectedBranch" prefHeight="516.0" prefWidth="526.0">
+                          <columns>
+                            <TableColumn fx:id="col_createbranchUnit" prefWidth="179.0" text="Unit" />
+                            <TableColumn fx:id="col_createbranchAddress" prefWidth="346.0" text="Address" />
+                          </columns>
+                        </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="manageCourse" text="Course">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="1000.0">
+                            <children>
+                                <Label layoutX="62.0" layoutY="39.0" text="Branch" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="74.0" text="Course Name" textFill="WHITE" />
+                                <TextField fx:id="courseNameInput" layoutX="150.0" layoutY="70.0" prefHeight="25.0" prefWidth="224.0" />
+                                <Button fx:id="saveCourseBtn" layoutX="58.0" layoutY="499.0" mnemonicParsing="false" onAction="#toCreateCourse" prefHeight="25.0" prefWidth="60.0" text="Save" />
+                                <Button layoutX="150.0" layoutY="499.0" mnemonicParsing="false" onAction="#toEditCourse" prefHeight="25.0" prefWidth="60.0" text="Update" />
+                                <Button layoutX="241.0" layoutY="499.0" mnemonicParsing="false" onAction="#toDeleteCourse" prefHeight="25.0" prefWidth="60.0" text="Delete" />
+                                <Button layoutX="332.0" layoutY="499.0" mnemonicParsing="false" onAction="#toClearInputs" prefHeight="25.0" prefWidth="60.0" text="Clear" />
+                                <Label layoutX="62.0" layoutY="108.0" text="Price" textFill="WHITE" />
+                                <TextField fx:id="coursePrice" layoutX="150.0" layoutY="105.0" prefHeight="25.0" prefWidth="100.0" />
+                        <ChoiceBox fx:id="createCourseBranchChoice" layoutX="150.0" layoutY="35.0" onDragDetected="#toCreateCourse" prefHeight="25.0" prefWidth="150.0" />
+                        <TableView fx:id="courseTableVIew" layoutX="449.0" layoutY="8.0" onMouseClicked="#getSelectedCourse" prefHeight="516.0" prefWidth="526.0">
+                          <columns>
+                            <TableColumn fx:id="col_createCourseName" prefWidth="241.0" text="Course" />
+                            <TableColumn fx:id="col_createCourseBranch" prefWidth="123.0" text="Branch" />
+                              <TableColumn fx:id="col_createCoursePrice" prefWidth="161.0" text="Price" />
+                          </columns>
+                        </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="manageModule" text="Module">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="1000.0">
+                            <children>
+                                <Label layoutX="62.0" layoutY="39.0" text="Branch" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="74.0" text="Course Name" textFill="WHITE" />
+                                <Button layoutX="58.0" layoutY="499.0" mnemonicParsing="false" onAction="#toCreateModule" prefHeight="25.0" prefWidth="60.0" text="Save" />
+                                <Button layoutX="150.0" layoutY="499.0" mnemonicParsing="false" onAction="#toEditModule" prefHeight="25.0" prefWidth="60.0" text="Update" />
+                                <Button layoutX="241.0" layoutY="499.0" mnemonicParsing="false" onAction="#toDeleteModules" prefHeight="25.0" prefWidth="60.0" text="Delete" />
+                                <Button layoutX="332.0" layoutY="499.0" mnemonicParsing="false" onAction="#toClearInputs" prefHeight="25.0" prefWidth="60.0" text="Clear" />
+                                <Label layoutX="62.0" layoutY="108.0" text="Lecturer" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="145.0" text="Module Name" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="178.0" prefWidth="77.0" text="Week Day" textFill="WHITE" />
+                                <Label layoutX="62.0" layoutY="213.0" text="Class Hour" textFill="WHITE" />
+                                <TextField fx:id="createModuleName" layoutX="150.0" layoutY="140.0" prefHeight="25.0" prefWidth="150.0" />
+                                <TextField fx:id="createModuleAddHour" layoutX="150.0" layoutY="210.0" prefHeight="24.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="createModuleAddBranch" layoutX="150.0" layoutY="35.0" prefHeight="24.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="ModuleInCourse" layoutX="150.0" layoutY="70.0" prefHeight="24.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="createModuleAddLecturer" layoutX="150.0" layoutY="105.0" prefHeight="24.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="createModuleAddWeekDay" layoutX="150.0" layoutY="175.0" prefHeight="24.0" prefWidth="150.0" />
+                        <TableView fx:id="moduleTableView" layoutX="449.0" layoutY="8.0" onMouseClicked="#getSelectedModule" prefHeight="516.0" prefWidth="526.0">
+                          <columns>
+                            <TableColumn fx:id="col_CreateModuleName" prefWidth="125.0" text="Module" />
+                            <TableColumn fx:id="col_createModuleCourse" prefWidth="113.0" text="Couse" />
+                              <TableColumn fx:id="col_createModuleLecturerid" prefWidth="102.0" text="LecturerID" />
+                              <TableColumn fx:id="col_createModuleWeekday" prefWidth="104.0" text="WeekDay" />
+                              <TableColumn fx:id="col_createModuleHour" prefWidth="81.0" text="Hour" />
+                          </columns>
+                        </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            <Tab fx:id="manageCourseYear" text="Course By Year">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="1000.0">
+                     <children>
+                        <Label fx:id="courseYearName" layoutX="62.0" layoutY="74.0" text="Course: " textFill="WHITE" />
+                        <Label fx:id="courseYear" layoutX="62.0" layoutY="108.0" text="Year: " textFill="WHITE" />
+                        <Label fx:id="moduleSubject" layoutX="62.0" layoutY="145.0" text="Module:" textFill="WHITE" />
+                        <TextField fx:id="courseYearInput" layoutX="150.0" layoutY="105.0" prefWidth="150.0" />
+                        <Button fx:id="courseYearSaveBtn" layoutX="150.0" layoutY="499.0" mnemonicParsing="false" onAction="#toCreateCourseYear" prefHeight="25.0" prefWidth="60.0" text="Save" />
+                        <ChoiceBox fx:id="courseYearNameInput" layoutX="150.0" layoutY="70.0" prefHeight="24.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="courseYearModuleInput" layoutX="150.0" layoutY="140.0" prefHeight="24.0" prefWidth="150.0" />
+                        <Button layoutX="241.0" layoutY="499.0" mnemonicParsing="false" onAction="#toClearInputs" prefHeight="25.0" prefWidth="60.0" text="Clear" />
+                        <Label fx:id="courseYearBranch" layoutX="62.0" layoutY="39.0" text="Branch:" textFill="WHITE" />
+                        <ChoiceBox fx:id="courseYearBranchInput" layoutX="150.0" layoutY="35.0" prefHeight="24.0" prefWidth="150.0" />
+                        <TableView fx:id="courseYearTableView" layoutX="449.0" layoutY="8.0" onMouseClicked="#getSelectedCourseYear" prefHeight="516.0" prefWidth="526.0">
+                          <columns>
+                            <TableColumn fx:id="col_createCourseYearCourse" prefWidth="205.0" text="Course" />
+                              <TableColumn fx:id="col_createCourseYearYear" prefWidth="74.0" text="Year" />
+                              <TableColumn fx:id="col_createCourseYearModule" prefWidth="246.0" text="Module" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Student Payments">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="1000.0">
+                     <children>
+                        <Label layoutX="379.0" layoutY="54.0" text="Seach by student ID:" textFill="WHITE" />
+                        <TableView fx:id="tableViewPayments" layoutX="252.0" layoutY="143.0" onMouseClicked="#getSelectedPaymentLog" prefHeight="209.0" prefWidth="497.0">
+                          <columns>
+                            <TableColumn fx:id="col_paymentsID" prefWidth="102.0" text="Payment ID" />
+                            <TableColumn fx:id="col_paymentsStudentID" prefWidth="128.0" text="STUDENT ID" />
+                              <TableColumn fx:id="col_paymentsInstallment" prefWidth="187.0" text="PAID INSTALLMENT" />
+                              <TableColumn fx:id="col_paymentsDate" prefWidth="79.0" text="DATE" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="btnAddPayment" layoutX="451.0" layoutY="404.0" mnemonicParsing="false" onAction="#addPayments" text="ADD PAYMENT" />
+                        <Label fx:id="numberInstallmentsToAdd" layoutX="346.0" layoutY="99.0" textFill="WHITE" />
+                        <ChoiceBox fx:id="studentsInDebt" layoutX="522.0" layoutY="50.0" prefHeight="25.0" prefWidth="100.0" />
+                        <Label fx:id="labelAmountOfInstallments" layoutX="386.0" layoutY="99.0" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>
