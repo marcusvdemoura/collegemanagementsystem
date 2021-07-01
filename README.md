@@ -1,12 +1,9 @@
 ## DORSET COLLEGE
 ## STUDENTS: Marcus Vinicius de Freitas Moura - 22415
-##           Valeria Cardoso da Paz - 21214
-##           Alexson Oliveira Silva - 21643
 ## LECTURER: John Rowley
 ## Object Oriented Programming - CA3
 ### DATE: 06/05/2021
 
-GitHub Link: https://github.com/Valeria-CPaz/oop-ca-final-g1-21214-22415-21643
 YouTube Walkthrough: https://youtu.be/OiZ53sIza6I
 
 
@@ -14,9 +11,6 @@ YouTube Walkthrough: https://youtu.be/OiZ53sIza6I
 
 The link to the official websites to download all the libraries and connectors necessary to run the application are described bellow. However, in this link you'll be able to download them as well. 
 
-ALSO, THE FINAL REPORT OF THE PROJECT IS INCLUDED IN THE LINK BELLOW:
-
-https://1drv.ms/f/s!Akdmy55W8FRClhwX3_jjA-cvMHq-
 
 
 
